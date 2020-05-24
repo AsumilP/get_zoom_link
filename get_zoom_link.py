@@ -10,7 +10,8 @@ from datetime import datetime
 token = "Line_Notify_token"
 url = "https://notify-api.line.me/api/notify"
 headers = {"Authorization": "Bearer " + token}
-
+# 東工大以外はotherに変更
+type='titech'
 
 # 保存先
 save_dir = os.path.join(os.curdir, 'gmaildata')
@@ -111,10 +112,13 @@ def receive_gmail(count):
         # メールデータを保存
         text,addr,date,subject,body = email_extract_text(raw)
         # date= datetime.strptime(date,'%Y/%m/%d %H:%M:%S')
+        if type='other':
+            addr='TOKYO TECH OCW-i <kyomu.ocw@jim.titech.ac.jp>'
         if addr=='TOKYO TECH OCW-i <kyomu.ocw@jim.titech.ac.jp>':
             if 'zoom.us' in body:
                 body_split=body.split()
-                subject=subject[17:].split('] ')[1]
+                if type='titech':
+                    subject=subject[17:].split('] ')[1]
                 for i in range(len(body_split)):
                     if 'zoom.us' in body_split[i]:
                         link=body_split[i-6]+body_split[i-5]+body_split[i-4]+body_split[i-3]+body_split[i-2]+'\n'+body_split[i-1]+'\n'+body_split[i]
