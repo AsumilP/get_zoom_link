@@ -1,6 +1,6 @@
 # get_zoom_link
 #### 大学からgmailに送られてくるZoomのリンクをgmail apiを利用して自動取得しLineに通知するスクリプト 
-watchコマンドなどで定期的に実行させることもできる  
+crontabなどで定期的に実行させることもできる  
 <img width="573" alt="スクリーンショット 2020-05-23 19 00 56" src="https://user-images.githubusercontent.com/40427919/82727853-ff41a900-9d27-11ea-8761-e4fb964ec7bd.png">
 
 ### 背景  
